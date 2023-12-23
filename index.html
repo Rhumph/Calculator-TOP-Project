@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,52 @@
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="baseDiv">
-        <input type="text" id="userInput" class="user-input" placeholder="Enter your text here">
-        <button class="enter-btn" onclick="inputNumbers()">Enter</button>
-        <button onclick="add(numbers)">Addition</button>
-        <button onclick="subtract([5,2,2])">Subtract</button>
-        <button onclick="multiply([5,2,2])">Multiply</button>
-        <button onclick="divide([5,2,2])">Divide</button>
-        <button onclick="clear()">Clear</button>
+
         <!-- You basically got up to finishing off the basic add function, it works, now you just need to make one for the other math functions, should be mostly a copy and paste job, then a mathod to input numbers to each function -->
         <p class="test-output"></p>
 
         <div class="calc-ui">
-            <button class="calc-ui-button">1</button>
-            <button class="calc-ui-button">2</button>
-            <button class="calc-ui-button">3</button>
-            <button class="calc-ui-button">4</button>
-            <button class="calc-ui-button">5</button>
-            <button class="calc-ui-button">6</button>
-            <button class="calc-ui-button">7</button>
-            <button class="calc-ui-button">8</button>
-            <button class="calc-ui-button">9</button>
-            <button class="calc-ui-button">=</button>
+
+            <div id="row1" class="calc-ui-row">
+                <input type="text" id="userInput" class="user-input" placeholder="Enter your text here">
+                <button class="enter-btn" onclick="inputNumbers()">Enter</button>
+            </div>
+
+            <div id="row2" class="calc-ui-row">
+                <button onclick="add(numbers)" id="add" class="operator-btn">+</button>
+                <button onclick="subtract()" id="subtract">-</button>
+                <button onclick="multiply()" id="multiply">x</button>
+                <button onclick="divide()" id="divide">/</button>
+            </div>
+
+            <div id="row3" class="calc-ui-row">
+                <button class="calc-ui-button">1</button>
+                <button class="calc-ui-button">2</button>
+                <button class="calc-ui-button">3</button>
+                <button class="calc-ui-button">4</button>
+            </div>
+            
+
+            <div id="row4" class="calc-ui-row">
+                <button class="calc-ui-button">5</button>
+                <button class="calc-ui-button">6</button>
+                <button class="calc-ui-button">7</button>
+                <button class="calc-ui-button">8</button>
+            </div>
+
+            <div id="row5" class="calc-ui-row">
+                <button class="calc-ui-button">9</button>
+                <button class="calc-ui-button">0</button>
+                <button class="calc-ui-button">=</button>
+                <button onclick="clear()" id="clearBtn">Clear</button>
+        </div>
+
         </div>
     </div>
-    
+
 </body>
+
 </html>

@@ -1,0 +1,45 @@
+body { 
+    display: flex;
+    background-color: lightgrey;
+    padding: 10px;
+}
+
+.baseDiv { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.calc-ui{ 
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 20px;
+}
+
+.calc-ui-row { 
+    width:100%;
+    display: flex;
+    margin: 3px;
+    justify-content: space-evenly;
+    height: 60px;
+}
+
+.calc-ui-button { 
+    width: 100%;
+    margin: 3px;
+}
+
+#row1 { 
+    width: 100%;
+    justify-content: space-between;
+}
+
+#clearBtn { 
+    margin: 3px;
+}
+
+.clearBtn { 
+    width: 100%;    
+}
