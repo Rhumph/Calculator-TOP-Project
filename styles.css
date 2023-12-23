@@ -14,12 +14,15 @@ body {
 .calc-ui{ 
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 600px;
+    height: 800px;
     padding: 20px;
+    /* justify-content: space-evenly; */
 }
 
 .calc-ui-row { 
     width:100%;
+    height: 100%;
     display: flex;
     margin: 3px;
     justify-content: space-evenly;
@@ -28,7 +31,9 @@ body {
 
 .calc-ui-button { 
     width: 100%;
+    height: 100%;
     margin: 3px;
+    font-size: 22px;
 }
 
 #row1 { 
@@ -38,8 +43,18 @@ body {
 
 #clearBtn { 
     margin: 3px;
+    height: 100%;
 }
 
-.clearBtn { 
-    width: 100%;    
+.operator-btn { 
+    width: 100%;
+    margin: 3px;
+    font-size: 40px;
+    height: 100%;
+}
+
+#userInput { 
+    width: 100%;
+    margin-right: 5px;
+    font-size: 40px;
 }

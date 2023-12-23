@@ -69,4 +69,12 @@ function clear(){
     numbers.value = "";
 }
 
-// console.log(add(numbers));
+const numberBtn = document.querySelectorAll(".calc-ui-button");
+const calcScreen = document.querySelector("#userInput");
+
+numberBtn.forEach(btn => {
+    btn.addEventListener("click", () => { 
+        const btnNumber = btn.textContent;
+        calcScreen.value = [calcScreen.value + btnNumber];
+    })
+});
