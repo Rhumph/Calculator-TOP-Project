@@ -1,80 +1,73 @@
-let numbers = [];
-
-function inputNumbers(){ 
-    let inputNumbers = document.querySelector(".user-input");
-
-    numbers.push(inputNumbers.value);
-
-    
-    // Will keep the below code to use for test down the track
-    let arry = document.createElement("p");
-    arry.textContent = numbers;
-    let outputLocation = document.querySelector(".test-output");
-    outputLocation.appendChild(arry);
-
-
-
-    inputNumbers.value = "";
-}
-
-function add(numbers){
-
-    let outputLocation = document.querySelector(".test-output");
-
-    if (numbers.length === 1){ 
-        return numbers[0];
-    }else{
-    let addedNumbers = numbers.reduce((sum, current) => parseInt(sum) + parseInt(current));
-    outputLocation.textContent = addedNumbers;
-    }    
-};
-
-function subtract(numbers){
-
-    let outputLocation = document.querySelector(".test-output");
-
-    if (numbers.length === 1){ 
-        return numbers[0];
-    }else{
-    let addedNumbers = numbers.reduce((sum, current) => parseInt(sum) - parseInt(current));
-    outputLocation.textContent = addedNumbers;
-    }    
-};
-
-function multiply(numbers){
-
-    let outputLocation = document.querySelector(".test-output");
-
-    if (numbers.length === 1){ 
-        return numbers[0];
-    }else{
-    let addedNumbers = numbers.reduce((sum, current) => parseInt(sum) * parseInt(current));
-    outputLocation.textContent = addedNumbers;
-    }    
-};
-
-function divide(numbers){
-
-    let outputLocation = document.querySelector(".test-output");
-
-    if (numbers.length === 1){ 
-        return numbers[0];
-    }else{
-    let addedNumbers = numbers.reduce((sum, current) => parseInt(sum) / parseInt(current));
-    outputLocation.textContent = addedNumbers;
-    }    
-};
-
-function clear(){ 
-    numbers.value = "";
-}
-
+let outputLocation = document.querySelector(".test-output");
 const numberBtn = document.querySelectorAll(".calc-ui-button");
 const calcScreen = document.querySelector("#userInput");
+let inputNumbers = document.querySelector(".user-input");
+const optBtn = document.querySelectorAll(".operator-btn");
+const equalbtn = document.querySelector("#equals-btn");
+const clearBtn = document.querySelector("#clearBtn");
+let varOne;
+let varTwo;
+let operator;
+
+clearBtn.addEventListener("click", () => { 
+    inputNumbers.value = "";
+    varOne = undefined;
+    varTwo = undefined;
+    operator = "";
+});
 
 numberBtn.forEach(btn => {
-    btn.addEventListener("click", () => { 
+    btn.addEventListener("click", () => {
         const btnNumber = btn.textContent;
         calcScreen.value = [calcScreen.value + btnNumber];
     })
 });
+
+optBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const btnOpt = btn.textContent;
+        operator = btnOpt;
+
+        if (typeof varOne === 'undefined') {
+            varOne = parseInt(inputNumbers.value);
+        } else if (typeof varTwo === 'undefined') {
+            varTwo = parseInt(inputNumbers.value);
+        }
+        
+        console.log(varOne + " " + operator + " " + varTwo)
+        calcScreen.value = "";
+    })
+});
+
+function operate() {
+
+    console.log(varOne + " " + operator + " " + varTwo)
+        if (typeof varTwo === 'undefined') {
+            varTwo = parseInt(inputNumbers.value);
+        }
+        
+        console.log(varOne + " " + operator + " " + varTwo)
+
+    switch (operator) {
+        case "+":
+            inputNumbers.value = (varOne + varTwo);
+            break;
+
+        case "-":
+            inputNumbers.value = (varOne - varTwo);
+            break;
+
+        case "*":
+            inputNumbers.value = (varOne * varTwo);
+            break;
+
+        case "/":
+            inputNumbers.value = (varOne / varTwo);
+            break;
+    }
+}
+
+
+
+
+

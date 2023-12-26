@@ -19,14 +19,14 @@
 
             <div id="row1" class="calc-ui-row">
                 <input type="text" id="userInput" class="user-input" placeholder="Enter your text here">
-                <button class="enter-btn" onclick="inputNumbers()">Enter</button>
+                <button class="enter-btn" onclick="">Enter</button>
             </div>
 
             <div id="row2" class="calc-ui-row">
-                <button onclick="add(numbers)" id="add" class="operator-btn">+</button>
-                <button onclick="subtract()" id="subtract" class="operator-btn">-</button>
-                <button onclick="multiply()" id="multiply" class="operator-btn">x</button>
-                <button onclick="divide()" id="divide" class="operator-btn">/</button>
+                <button id="add" class="operator-btn">+</button>
+                <button id="subtract" class="operator-btn">-</button>
+                <button id="multiply" class="operator-btn">*</button>
+                <button id="divide" class="operator-btn">/</button>
             </div>
 
             <div id="row3" class="calc-ui-row">
@@ -35,7 +35,7 @@
                 <button class="calc-ui-button">3</button>
                 <button class="calc-ui-button">4</button>
             </div>
-            
+
 
             <div id="row4" class="calc-ui-row">
                 <button class="calc-ui-button">5</button>
@@ -47,9 +47,9 @@
             <div id="row5" class="calc-ui-row">
                 <button class="calc-ui-button">9</button>
                 <button class="calc-ui-button">0</button>
-                <button class="operator-btn">=</button>
-                <button onclick="clear()" id="clearBtn">Clear</button>
-        </div>
+                <button id="equals-btn" onclick="operate()">=</button>
+                <button id="clearBtn">Clear</button>
+            </div>
 
         </div>
     </div>
