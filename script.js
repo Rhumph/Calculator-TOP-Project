@@ -8,7 +8,9 @@ const clearBtn = document.querySelector("#clearBtn");
 let varOne;
 let varTwo;
 let operator;
+let isCalculated = false
 
+// Listener to clear all staged calculations
 clearBtn.addEventListener("click", () => { 
     inputNumbers.value = "";
     varOne = undefined;
@@ -16,6 +18,8 @@ clearBtn.addEventListener("click", () => {
     operator = "";
 });
 
+
+// Listener to enter numbers to calc
 numberBtn.forEach(btn => {
     btn.addEventListener("click", () => {
         const btnNumber = btn.textContent;
@@ -23,51 +27,94 @@ numberBtn.forEach(btn => {
     })
 });
 
+
+// Listener to enter operators to calc
 optBtn.forEach(btn => {
     btn.addEventListener("click", () => {
         const btnOpt = btn.textContent;
-        operator = btnOpt;
-
-        if (typeof varOne === 'undefined') {
-            varOne = parseInt(inputNumbers.value);
-        } else if (typeof varTwo === 'undefined') {
-            varTwo = parseInt(inputNumbers.value);
-        }
-        
-        console.log(varOne + " " + operator + " " + varTwo)
-        calcScreen.value = "";
+        calcScreen.value = [calcScreen.value + btnOpt];
     })
 });
 
 function operate() {
 
-    console.log(varOne + " " + operator + " " + varTwo)
-        if (typeof varTwo === 'undefined') {
-            varTwo = parseInt(inputNumbers.value);
+    toCalcArr = [...inputNumbers.value];
+
+    console.log(toCalcArr)
+
+    for (let i = 0; i < toCalcArr.length; i++) {
+        if (isNaN(toCalcArr[i])){ 
+            
+        } else if(!isNaN(toCalcArr[i]))  {
+            console.log(toCalcArr)
+            if(!isNaN(toCalcArr[i+1]))  {
+                const nextNum = Number(toCalcArr[i + 1]);
+                const currentNum = Number(toCalcArr[i]);
+                const newNum = currentNum.toString() + nextNum.toString();
+                toCalcArr.splice(i, 2, newNum);
+                i--;
+            }
         }
-        
-        console.log(varOne + " " + operator + " " + varTwo)
-
-    switch (operator) {
-        case "+":
-            inputNumbers.value = (varOne + varTwo);
-            break;
-
-        case "-":
-            inputNumbers.value = (varOne - varTwo);
-            break;
-
-        case "*":
-            inputNumbers.value = (varOne * varTwo);
-            break;
-
-        case "/":
-            inputNumbers.value = (varOne / varTwo);
-            break;
     }
+
+    console.log(toCalcArr)
+
+    for (let i = 0; i < toCalcArr.length; i++) {
+        if (toCalcArr[i] === "*") {
+            const operand1 = Number(toCalcArr[i - 1]);
+            const operand2 = Number(toCalcArr[i + 1]);
+            const result = operand1 * operand2;
+            toCalcArr.splice(i - 1, 3, result);
+            i--;
+        }
+    }
+
+    console.log(toCalcArr)
+
+    for (let i = 0; i < toCalcArr.length; i++) {
+        if (toCalcArr[i] === "/") {
+            const operand1 = Number(toCalcArr[i - 1]); 
+            const operand2 = Number(toCalcArr[i + 1]);
+            const result = operand1 / operand2;
+            toCalcArr.splice(i - 1, 3, result);
+            i--;
+        }
+    }
+
+    console.log(toCalcArr)
+
+    for (let i = 0; i < toCalcArr.length; i++) {
+        if (toCalcArr[i] === "+") {
+            const operand1 = Number(toCalcArr[i - 1]); 
+            const operand2 = Number(toCalcArr[i + 1]);
+            const result = operand1 + operand2;
+            toCalcArr.splice(i - 1, 3, result);
+            i--;
+        }
+    }
+
+    console.log(toCalcArr)
+
+    for (let i = 0; i < toCalcArr.length; i++) {
+        if (toCalcArr[i] === "-") {
+            const operand1 = Number(toCalcArr[i - 1]);  
+            const operand2 = Number(toCalcArr[i + 1]);
+            const result = operand1 - operand2;
+            toCalcArr.splice(i - 1, 3, result);
+            i--;
+        }
+    }
+    console.log(toCalcArr)
+    inputNumbers.value = toCalcArr;
 }
 
 
+// DO I even bother with this button?
+function deletechar() { 
+    let modArr = [...inputNumbers.value]
+    let delArr = modArr.pop()
 
+    inputNumbers.value = toString(modArr);
+}
 
 
